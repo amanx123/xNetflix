@@ -8,7 +8,6 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 
 const SignIn = () => {
-    const router = useRouter();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -23,15 +22,13 @@ const SignIn = () => {
             await signIn('credentials', {
                 email,
                 password,
-                redirect: false,
-                callbackUrl: '/'
+                callbackUrl: '/profiles'
             })
-            router.push('/')
         }
         catch (error) {
             console.error(error)
         }
-    }, [email, password, router])
+    }, [email, password])
     const register = useCallback(async () => {
         try {
             await axios.post("/api/register", {
@@ -83,10 +80,10 @@ const SignIn = () => {
                     <div
                         className="flex flex-row items-center justify-center gap-10 mt-2"
                     >
-                        <div className="w-10 h-10 bg-white flex rounded-full items-center justify-center cursor-pointer hover:opacity-80">
+                        <div onClick={() => signIn('google', { callbackUrl: '/profiles' })} className="w-10 h-10 bg-white flex rounded-full items-center justify-center cursor-pointer hover:opacity-80">
                             <FcGoogle size={30} />
                         </div>
-                        <div onClick={() => signIn('github', { callbackUrl: '/' })} className="w-10 h-10 bg-white flex rounded-full items-center justify-center cursor-pointer hover:opacity-80">
+                        <div onClick={() => signIn('github', { callbackUrl: '/profiles' })} className="w-10 h-10 bg-white flex rounded-full items-center justify-center cursor-pointer hover:opacity-80">
                             <FaGithub size={30} />
                         </div>
                     </div>

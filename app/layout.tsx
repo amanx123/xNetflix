@@ -1,5 +1,6 @@
-import './globals.css'
 
+import './globals.css'
+import Provider from './Provider'
 export const metadata = {
   title: 'Netflix',
   description: 'Best OTT platform in the world',
@@ -13,7 +14,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Provider>
+          {children}
+        </Provider>
+      </body>
     </html>
   )
 }

@@ -16,8 +16,8 @@ export const authOptions: NextAuthOptions = ({
             clientSecret: process.env.GITHUB_SECRET || ""
         }),
         GoogleProvider({
-            clientId: process.env.GOOGLE_ID as string,
-            clientSecret: process.env.GOOGLE_SECRET as string
+            clientId: process.env.GOOGLE_ID || "",
+            clientSecret: process.env.GOOGLE_SECRET || ""
         }),
         Credentials({
             id: 'credentials',
@@ -59,7 +59,7 @@ export const authOptions: NextAuthOptions = ({
         })
     ],
     pages: {
-        signIn: '/auth'
+        signIn: '/login'
     },
     debug: process.env.NODE_ENV === 'development',
     session: {
