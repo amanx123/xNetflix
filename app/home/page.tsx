@@ -5,6 +5,7 @@ import { redirect } from "next/navigation"
 import useCurrentUser from "@/hooks/useCurrentUser"
 import Image from "next/image"
 import Navbar from "@/components/Navbar"
+import BillBoard from "@/components/BillBoard"
 export default function Home() {
     const { data: session } = useSession({
         required: true,
@@ -16,6 +17,7 @@ export default function Home() {
     return (
         <>
             <Navbar />
+            <BillBoard />
         </>
     )
 }
