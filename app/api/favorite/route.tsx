@@ -62,7 +62,7 @@ export async function DELETE(req: Request, res: Response) {
                 email: session?.user?.email || '',
             },
             data: {
-                favoriteIds: updatedFavoriteIds,
+                favoriteIds: updatedFavoriteIds as string[]
             }
         });
 
