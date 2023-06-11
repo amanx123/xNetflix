@@ -4,6 +4,7 @@ import NavItem from "./NavItem"
 import { BsChevronDown, BsSearch, BsBell } from 'react-icons/bs'
 import AccountMenu from "./AccountMenu";
 const TOP_OFFSET = 66;
+
 function Navbar() {
     const [showMenu, setShowMenu] = useState(false);
     const [showAccountMenu, setShowAccountMenu] = useState(false);
@@ -29,7 +30,7 @@ function Navbar() {
 
     return (
         <nav className="w-full fixed z-40">
-            <div className={`px-4 md:px-14 py-4 lg:py-1 flex flex-row items-center transition duration-500 ${showBackground ? 'bg-zinc-900 bg-opacity-90' : ''}`}
+            <div className={`px-4 md:px-14 py-4 lg:py-1 flex flex-row items-center transition duration-500 ${showBackground ? 'bg-neutral-900 bg-opacity-90' : ''}`}
             >
                 <img className="h-12 lg:h-20 " src="/assets/landing/logo.png" alt="Logo" />
                 <div className="ml-8 flex-row gap-6 hidden lg:flex">

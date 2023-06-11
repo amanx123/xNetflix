@@ -1,9 +1,7 @@
 "use client"
 import axios from "axios";
-import Link from "next/link";
 import { useCallback, useState } from "react";
 import { signIn } from 'next-auth/react'
-import { useRouter } from "next/navigation";
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 
@@ -43,6 +41,7 @@ const SignIn = () => {
         }
     }, [email, name, password, login])
 
+
     return (
         <>
             <div className="bg-black bg-opacity-60 px-16 py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-lg">
@@ -66,6 +65,7 @@ const SignIn = () => {
                         className="placeholder-neutral-400 px-4 py-3 w-full bg-zinc-800 rounded-md text-white"
                     />
                     <input required
+                        onKeyDown={(e) => { if (e.key == "Enter") { variant === 'signin' ? login() : register() } }}
                         type="password"
                         name="password"
                         value={password}
