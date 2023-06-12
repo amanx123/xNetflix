@@ -4,23 +4,25 @@ import prismadb from '@/lib/prismadb';
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
-    try {
-        const session = await getServerSession(authOptions);
-        const user = await prismadb.user.findUnique({
-            where: {
-                email: session?.user?.email || ''
-            }
-        })
-        const favoriteMovies = await prismadb.movie.findMany({
-            where: {
-                id: {
-                    in: user?.favoriteIds
+    const session = await getServerSession(authOptions);
+    if (session) {
+        try {
+            const user = await prismadb.user.findUnique({
+                where: {
+                    email: session?.user?.email || ''
                 }
-            }
-        })
-        return NextResponse.json(favoriteMovies, { status: 200 })
-    }
-    catch (error) {
-        return NextResponse.json(error)
+            })
+            const favoriteMovies = await prismadb.movie.findMany({
+                where: {
+                    id: {
+                        in: user?.favoriteIds
+                    }
+                }
+            })
+            return NextResponse.json(favoriteMovies)
+        }
+        catch (error) {
+            return NextResponse.json(error)
+        }
     }
 }

@@ -6,6 +6,7 @@ interface MovieListProps {
 
 }
 const MovieList: React.FC<MovieListProps> = ({ title, data }) => {
+    console.log(typeof data)
     if (isEmpty(data)) {
         return null;
     }
@@ -17,8 +18,8 @@ const MovieList: React.FC<MovieListProps> = ({ title, data }) => {
                 </p>
                 <div className="grid grid-cols-4 gap-2">
                     {
-                        data.map((movie) => (
-                            <MovieCard key={movie.id} data={movie} />
+                        data.map((movie, idx) => (
+                            <MovieCard key={idx} data={movie} />
                         ))
                     }
 

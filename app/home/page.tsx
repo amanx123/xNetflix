@@ -8,6 +8,7 @@ import useMovieList from "@/hooks/useMovieList"
 import useFavorites from "@/hooks/useFavorites"
 import InfoModal from "@/components/InfoModal"
 import useInfoModal from "@/hooks/useInfoModal"
+import useCurrentUser from "@/hooks/useCurrentUser"
 export default function Home() {
     const { data: session } = useSession({
         required: true,
@@ -15,7 +16,7 @@ export default function Home() {
             redirect('/api/auth/signin')
         }
     })
-    // const { data: user } = useCurrentUser();
+    const { data: user } = useCurrentUser();
 
     const { data: movies = [] } = useMovieList();
     const { data: favorites = [] } = useFavorites();
